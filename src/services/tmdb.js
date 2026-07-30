@@ -1,7 +1,8 @@
+// 
 import { normalizeMovie } from '../utils/normalizeMovie'
 
-const API_KEY = import.meta.env.VITE_TMDB_API_KEY || 'YOUR_TMDB_API_KEY'
-const BASE_URL = 'https://api.themoviedb.org/3'
+// Use local proxy instead of direct API calls
+const BASE_URL = '/api/tmdb'
 
 async function fetchJson(url) {
   const response = await fetch(url)
@@ -17,7 +18,7 @@ export async function searchMovies(query, page = 1) {
     return { results: [], page: 1, total_pages: 0, total_results: 0 }
   }
 
-  const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}&page=${page}`
+  const url = `${BASE_URL}/search/movie?query=${encodeURIComponent(query)}&page=${page}`
   const data = await fetchJson(url)
 
   return {
@@ -29,7 +30,7 @@ export async function searchMovies(query, page = 1) {
 }
 
 export async function getMovieDetails(movieId) {
-  const url = `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`
+  const url = `${BASE_URL}/movie/${movieId}`
   const data = await fetchJson(url)
   return normalizeMovie(data)
 }
