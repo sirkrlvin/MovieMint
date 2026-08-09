@@ -1,0 +1,20 @@
+/* src/index.css */
+@import "tailwindcss";
+
+@theme {
+  /* colors */
+  --color-accent: #f2a623;
+  --color-surface: #121212;
+  --color-surface-raised: #1c1c1c;
+  --color-text-muted: #a1a1a1;
+
+  /* fonts */
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+}
+
+body {
+  background-color: var(--color-surface);
+  color: white;
+  font-family: var(--font-sans);
+}

@@ -2,7 +2,7 @@ import MovieCard from './MovieCard'
 
 export default function MovieGrid({ movies, onOpenMovie }) {
   return (
-    <div style={{ display: 'grid', gap: '1rem' }}>
+    <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
       {movies.map((movie) => (
         <MovieCard key={movie.id} movie={movie} onOpen={onOpenMovie} />
       ))}

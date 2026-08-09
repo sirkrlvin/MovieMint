@@ -43,22 +43,27 @@ function HomeContent() {
   }
 
   return (
-    <div>
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(245,158,11,0.16),_transparent_35%),linear-gradient(135deg,_#050505,_#111111)] text-white">
       <Navbar />
-      <SearchBar onSearch={handleSearch} />
+      <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
+        <SearchBar onSearch={handleSearch} />
 
-      {error && <p role="alert">{error}</p>}
-      {loading && <p>Searching for movies...</p>}
-      {!loading && searchQuery && movies.length === 0 && <p>No movies found for "{searchQuery}".</p>}
+        {error && <p role="alert" className="mb-4 text-red-400">{error}</p>}
+        {loading && <p className="mb-4 text-zinc-400">Searching for movies...</p>}
+        {!loading && searchQuery && movies.length === 0 && <p className="mb-4 text-zinc-400">No movies found for "{searchQuery}".</p>}
+        {!loading && !searchQuery && movies.length > 0 && <p className="mb-4 text-sm uppercase tracking-[0.3em] text-zinc-500">Trending now</p>}
 
-      {!selectedMovie ? (
-        movies.length > 0 && <MovieGrid movies={movies} onOpenMovie={setSelectedMovie} />
-      ) : (
-        <>
-          <button onClick={() => setSelectedMovie(null)} style={{ marginBottom: '1rem' }}>Back to results</button>
-          <MovieDetails movie={selectedMovie} />
-        </>
-      )}
+        {!selectedMovie ? (
+          movies.length > 0 && <MovieGrid movies={movies} onOpenMovie={setSelectedMovie} />
+        ) : (
+          <>
+            <button onClick={() => setSelectedMovie(null)} className="mb-4 rounded-lg border border-zinc-700 px-3 py-2 text-sm text-zinc-200 transition hover:border-amber-400 hover:text-white">
+              Back to results
+            </button>
+            <MovieDetails movie={selectedMovie} />
+          </>
+        )}
+      </div>
     </div>
   )
 }
