@@ -1,3 +1,4 @@
+// edits and normalizes response from TMDB API
 export function normalizeMovie(raw) {
   if (!raw) return null
 

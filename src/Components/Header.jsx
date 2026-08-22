@@ -1,4 +1,4 @@
-export default function NavBar() {
+export default function Header() {
   return (
     <header className="border-b border-zinc-800 bg-zinc-950/90 backdrop-blur">
       <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-6 sm:px-6 lg:px-8">

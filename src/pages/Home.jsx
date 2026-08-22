@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
-import Navbar from '../components/Navbar'
+import Navbar from '../components/Header'
 import SearchBar from '../components/SearchBar'
 import MovieGrid from '../components/MovieGrid'
 import MovieDetails from './MovieDetails'
 import { searchMovies } from '../services/tmdb'
 import { MovieProvider, useMovieContext } from '../context/MovieContext'
 
+// 
 function HomeContent() {
   const { movies, setMovies, selectedMovie, setSelectedMovie, loading, setLoading, error, setError } = useMovieContext()
   const [searchQuery, setSearchQuery] = useState('')
@@ -25,7 +26,7 @@ function HomeContent() {
 
     loadDefaultMovies()
   }, [setLoading, setMovies, setError])
-
+  // 
   const handleSearch = async (query) => {
     setSearchQuery(query)
     setLoading(true)
@@ -67,7 +68,7 @@ function HomeContent() {
     </div>
   )
 }
-
+// Appends to APP Component
 export default function Home() {
   return (
     <MovieProvider>

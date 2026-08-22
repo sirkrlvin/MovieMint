@@ -1,4 +1,4 @@
-// 
+// imported transformed TMDB data from normalizeMovie.js
 import { normalizeMovie } from '../utils/normalizeMovie'
 
 // Use local proxy instead of direct API calls

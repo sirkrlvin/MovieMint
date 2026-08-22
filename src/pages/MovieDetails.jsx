@@ -1,3 +1,4 @@
+// 
 export default function MovieDetails({ movie }) {
   if (!movie) {
     return <p>Select a movie to view details.</p>
