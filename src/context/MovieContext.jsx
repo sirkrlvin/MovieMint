@@ -1,7 +1,8 @@
-import { createContext, useContext, useMemo, useState } from 'react'
+import { createContext, useMemo, useState } from 'react'
 
-const MovieContext = createContext(null)
+export const MovieContext = createContext(null)
 
+// Stores and shares movie results, the selected movie, loading status, and errors across the app.
 export function MovieProvider({ children }) {
   const [movies, setMovies] = useState([])
   const [selectedMovie, setSelectedMovie] = useState(null)
@@ -20,12 +21,4 @@ export function MovieProvider({ children }) {
   }), [movies, selectedMovie, loading, error])
 
   return <MovieContext.Provider value={value}>{children}</MovieContext.Provider>
-}
-
-export function useMovieContext() {
-  const context = useContext(MovieContext)
-  if (!context) {
-    throw new Error('useMovieContext must be used inside MovieProvider')
-  }
-  return context
 }

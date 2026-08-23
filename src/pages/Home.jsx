@@ -4,7 +4,8 @@ import SearchBar from '../components/SearchBar'
 import MovieGrid from '../components/MovieGrid'
 import MovieDetails from './MovieDetails'
 import { searchMovies } from '../services/tmdb'
-import { MovieProvider, useMovieContext } from '../context/MovieContext'
+import { MovieProvider } from '../context/MovieContext'
+import { useMovieContext } from '../context/useMovieContext'
 
 // 
 function HomeContent() {
@@ -26,7 +27,9 @@ function HomeContent() {
 
     loadDefaultMovies()
   }, [setLoading, setMovies, setError])
-  // 
+
+ // Searches movies via the API, updating loading/error/movies state
+ //throughout the request lifecycle (start, success, failure, and cleanup)
   const handleSearch = async (query) => {
     setSearchQuery(query)
     setLoading(true)

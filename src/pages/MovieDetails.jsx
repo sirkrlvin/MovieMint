@@ -1,4 +1,4 @@
-// 
+// OnClick links user to description about the movie
 export default function MovieDetails({ movie }) {
   if (!movie) {
     return <p>Select a movie to view details.</p>
