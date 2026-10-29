@@ -36,15 +36,13 @@ npm install
 
 ### Environment variables
 
-Create a `.env` file in the project root:
+For local development, create a `.env.local` file in the project root:
 
 ```env
-TMDB_API_KEY=your_tmdb_api_key_here
+VITE_TMDB_API_KEY=your_tmdb_api_key_here
 ```
 
-> Adjust the variable name to match whatever `vite.config.js` reads.
-
-Never commit `.env`. Make sure it is listed in `.gitignore`.
+For Vercel production deployments, add `TMDB_API_KEY` in the project's Environment Variables settings. The Vercel function reads this server-side variable; do not use the `VITE_` prefix for the production secret.
 
 ### Run the app
 
@@ -86,9 +84,9 @@ A few deliberate decisions worth knowing about:
 
 ### API key handling
 
-In development, Vite proxies requests to TMDB so the key stays out of client code (`loadEnv(mode, process.cwd(), '')` exposes env vars inside `vite.config.js`).
+In development, Vite proxies requests to TMDB so the key stays out of client code. In production on Vercel, `api/tmdb/[...path].js` provides the same proxy and reads `TMDB_API_KEY` server-side.
 
-**Important:** this proxy only exists in the dev server. A production build will not have it, so a deployed version needs a server-side layer (for example a serverless function) to keep the API key private.
+The local Vite proxy and Vercel function both support the search and movie-details requests used by the app. A production deployment must set `TMDB_API_KEY` in Vercel's project settings.
 
 ## Design
 
