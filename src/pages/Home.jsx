@@ -48,7 +48,6 @@ function HomeContent() {
 
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(245,158,11,0.16),_transparent_35%),linear-gradient(135deg,_#050505,_#111111)] text-white">
-      <Navbar />
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
         <SearchBar onSearch={handleSearch} />
 
