@@ -50,7 +50,6 @@ function HomeContent() {
     <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(245,158,11,0.16),_transparent_35%),linear-gradient(135deg,_#050505,_#111111)] text-white">
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
         <SearchBar onSearch={handleSearch} />
-
         {error && <p role="alert" className="mb-4 text-red-400">{error}</p>}
         {loading && <p className="mb-4 text-zinc-400">Searching for movies...</p>}
         {!loading && searchQuery && movies.length === 0 && <p className="mb-4 text-zinc-400">No movies found for "{searchQuery}".</p>}
