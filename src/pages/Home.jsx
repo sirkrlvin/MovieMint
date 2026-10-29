@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import Navbar from '../components/Header'
 import SearchBar from '../components/SearchBar'
 import MovieGrid from '../components/MovieGrid'
 import MovieDetails from './MovieDetails'
@@ -12,11 +11,12 @@ function HomeContent() {
   const { movies, setMovies, selectedMovie, setSelectedMovie, loading, setLoading, error, setError } = useMovieContext()
   const [searchQuery, setSearchQuery] = useState('')
 
+  //
   useEffect(() => {
     const loadDefaultMovies = async () => {
       setLoading(true)
       try {
-        const result = await searchMovies('popular')
+        const result = await searchMovies('spider')
         setMovies(result.results || [])
       } catch (err) {
         setError(err.message)
